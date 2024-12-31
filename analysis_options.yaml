@@ -1,0 +1,18 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    # unused_import: error
+    # unnecessary_import: error
+    # prefer_relative_imports: error
+    # always_use_package_imports: error
+    invalid_annotation_target: ignore
+
+linter:
+  rules:
+    avoid_print: false
+    prefer_single_quotes: true
+    constant_identifier_names: ALL_CAPS_WITH_UNDERSCORES
+    always_use_package_imports: true
+    unused_import: false
+    unnecessary_import: false

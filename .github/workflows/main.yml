@@ -1,0 +1,138 @@
+name: Flutter Demo App
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_mode:
+        type: choice
+        description: Build Mode (patch | minor | major)
+        required: true
+        options:
+          - patch
+          - minor
+          - major
+
+      platform:
+        type: choice
+        description: Build platform (ios | android | both)
+        required: true
+        options:
+          - ios
+          - android
+          - both 
+
+jobs:
+  build-ios:
+    if: ${{ github.event.inputs.platform == 'ios' || github.event.inputs.platform == 'both' }}
+    runs-on: macos-latest
+
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Git
+        run: |
+          git config user.name "HTD2k1"
+          git config user.email "hatiendat.dev@gmail.com"
+          git config advice.addIgnoredFile false
+          git config advice.detachedHead false
+          xcodebuild -version
+
+      - name: Set Up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'  
+          java-version: '17'
+
+        cache: 'gradle'
+        cache-dependency-path: | # optional
+          sub-project/*.gradle*
+          sub-project/**/gradle-wrapper.properties
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version-file: pubspec.yaml # path to pubspec.yaml
+      - run: flutter --version
+
+      - name: Build Android 
+        run: flutter build apk --release
+
+      # - name: Build IOS
+      #   run: flutter build ipa --no-codesign
+
+      # - name: Compress Archives and IPAs
+      #   run: |
+      #     cd build
+      #     tar -czf ios_build.tar.gz ios
+
+        #9 Upload Artifacts
+        #  Add this if make bundle: build/app/outputs/bundle/release/app-release.aab
+        #
+        #   build/ios_build.tar.gz
+        #   build/app/outputs/bundle/release/app-release.aab
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Releases
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+
+        #10 Extract Version
+      - name: Extract version from pubspec.yaml
+        id: extract_version
+        run: |
+          version=$(grep '^version: ' pubspec.yaml | cut -d ' ' -f 2 | tr -d '\r')
+          echo "VERSION=$version" >> $GITHUB_ENV
+
+        #11 Check if Tag Exists
+      - name: Check if Tag Exists
+        id: check_tag
+        run: |
+          if git rev-parse "v${{ env.VERSION }}" >/dev/null 2>&1; then
+            echo "TAG_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "TAG_EXISTS=false" >> $GITHUB_ENV
+          fi
+
+      - name: Modify Tag
+        if: env.TAG_EXISTS == 'true'
+        id: modify_tag
+        run: |
+          new_version="${{ env.VERSION }}-build-${{ github.run_number }}"
+          echo "VERSION=$new_version" >> $GITHUB_ENV
+        
+        #  Add this if make: build/app/outputs/bundle/release/app-release.aab
+        #  Add this if make: build/ios_build.tar.gz
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          artifacts: |
+            build/app/outputs/flutter-apk/app-release.apk
+          tag: v${{ env.VERSION }}
+
+      - name: Versioning application artifact
+        run: |
+          VERSION=$(grep 'version:' pubspec.yaml | sed 's/version: //')
+          GIT_TAG="v$VERSION"
+
+          git tag --delete $GIT_TAG || true
+          git tag $GIT_TAG
+          git checkout $GIT_TAG
+
+          git add .
+          git commit -m "Version: $VERSION | Rebuild latest src"
+          git push origin $GIT_TAG
+
+          git fetch
+          git checkout develop
+          git merge --allow-unrelated-histories $GIT_TAG
+          git push origin develop
+
+          git checkout $GIT_TAG
+

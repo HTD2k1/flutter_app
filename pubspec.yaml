@@ -1,0 +1,143 @@
+name: dailymildo_fe_mobile
+description: Gong Check.
+
+publish_to: "none"
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 2.0.1+7
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: 3.24.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  rxdart: ^0.28.0
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.5.1
+  riverpod_annotation: ^2.3.5
+  http: ^1.2.2
+  shared_preferences: ^2.1.0
+  path_provider: ^2.0.11
+  intl: ^0.19.0
+  url_launcher: ^6.1.5
+  flutter_svg: ^2.0.10+1
+  table_calendar: ^3.0.6
+  image_picker: ^1.1.2
+  flutter_datetime_picker_plus: ^2.2.0
+  photo_view: ^0.15.0
+  timeago: ^3.3.0
+  webview_flutter: ^4.8.0
+  mask_text_input_formatter: ^2.4.0
+  word_break_text: ^0.1.0
+  file_picker: ^8.0.5
+  image_painter: ^0.7.1
+  image_gallery_saver: ^2.0.3
+  syncfusion_flutter_calendar: ^27.1.48
+  flutter_image_compress: ^2.3.0
+  firebase_core: ^3.1.0
+  firebase_messaging: ^15.0.1
+  flutter_local_notifications: ^17.1.2
+  devicelocale: ^0.8.1
+  daum_postcode_search: ^0.0.2
+  clipboard: ^0.1.3
+  share_plus: ^10.0.2
+  money_formatter: ^0.0.3
+  flutter_downloader: ^1.9.1
+  contacts_service: ^0.6.3
+  permission_handler: ^11.3.1
+  logger: ^2.3.0
+  firebase_analytics: ^11.0.1
+  is_first_run: ^1.0.0
+  smooth_page_indicator: ^1.1.0
+  timer_count_down: ^2.2.2
+  html: ^0.15.4
+  cron: ^0.6.1
+  dio: ^5.3.1
+  shimmer: ^3.0.0
+  timezone: ^0.9.0
+  equatable: ^2.0.5
+  pro_image_editor: ^5.2.1
+  app_links: ^6.1.4
+  upgrader: ^11.2.0
+  package_info_plus: ^8.0.2
+
+  webview_flutter_wkwebview: any
+  uuid: ^4.5.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.13.1
+  build_runner: ^2.3.3
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/icons/drawer/
+    - assets/icons/stepper/
+    - assets/icons/logo_app/
+    - assets/icon_weather/
+    - assets/icon_page/
+    - packages/timezone/data/latest.tzf
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_icons:
+  image_path: "assets/icon/app_icon.png"
+  android: true
+  ios: true
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/icon/app_icon.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/icon/app_icon.png"
+    icon_size: 48

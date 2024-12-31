@@ -1,0 +1,84 @@
+{
+  "project_info": {
+    "project_number": "193915784324",
+    "project_id": "dailymildo-gongcheck-dev-001",
+    "storage_bucket": "dailymildo-gongcheck-dev-001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193915784324:android:97718158468b6fd3d6c6d1",
+        "android_client_info": {
+          "package_name": "com.dailymildo.gongcheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901870068382-sv322d82b3fvfcvs1omj5ff7mb22kmk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9d4s7-81G7FD0R98qZtUtcmVoKBtX2rg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901870068382-sv322d82b3fvfcvs1omj5ff7mb22kmk4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "901870068382-so0bgqova6nhvkk646pkvadl4mjacsk2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dailymildo.gongcheck",
+                "app_store_id": "6443745675"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901870068382:android:b3332e8a0b7dfbcbeb118f",
+        "android_client_info": {
+          "package_name": "com.example.dailymildo_fe_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901870068382-sv322d82b3fvfcvs1omj5ff7mb22kmk4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4BeiCnuZxMpNjUuK2WUm_qjFVWvmIUiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901870068382-sv322d82b3fvfcvs1omj5ff7mb22kmk4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "901870068382-so0bgqova6nhvkk646pkvadl4mjacsk2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dailymildo.gongcheck",
+                "app_store_id": "6443745675"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
