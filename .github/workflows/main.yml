@@ -45,11 +45,10 @@ jobs:
         with:
           distribution: 'zulu'  
           java-version: '17'
-
-        cache: 'gradle'
-        cache-dependency-path: | # optional
-          sub-project/*.gradle*
-          sub-project/**/gradle-wrapper.properties
+          cache: 'gradle'
+          cache-dependency-path: | # optional
+            sub-project/*.gradle*
+            sub-project/**/gradle-wrapper.properties
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
