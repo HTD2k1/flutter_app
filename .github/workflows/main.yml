@@ -112,23 +112,23 @@ jobs:
             build/app/outputs/flutter-apk/app-release.apk
           tag: v${{ env.VERSION }}
 
-      - name: Versioning application artifact
-        run: |
-          VERSION=$(grep 'version:' pubspec.yaml | sed 's/version: //')
-          GIT_TAG="v$VERSION"
-
-          git tag --delete $GIT_TAG || true
-          git tag $GIT_TAG
-          git checkout $GIT_TAG
-
-          git add .
-          git commit -m "Version: $VERSION | Rebuild latest src"
-          git push origin $GIT_TAG
-
-          git fetch
-          git checkout develop
-          git merge --allow-unrelated-histories $GIT_TAG
-          git push origin develop
-
-          git checkout $GIT_TAG
-
+      # - name: Versioning application artifact
+      #   run: |
+      #     VERSION=$(grep 'version:' pubspec.yaml | sed 's/version: //')
+      #     GIT_TAG="v$VERSION"
+      #
+      #     git tag --delete $GIT_TAG || true
+      #     git tag $GIT_TAG
+      #     git checkout $GIT_TAG
+      #
+      #     git add .
+      #     git commit -m "Version: $VERSION | Rebuild latest src"
+      #     git push origin $GIT_TAG
+      #
+      #     git fetch
+      #     git checkout develop
+      #     git merge --allow-unrelated-histories $GIT_TAG
+      #     git push origin develop
+      #
+      #     git checkout $GIT_TAG
+      #
